@@ -2,6 +2,7 @@ ML-atomate
 ====
 
 Machine-learning-assisted atomate code for autonomous computational materials screening.
+(This is for the review and only README, examples scripts, empty codes and help of priority_setter.py are updated.)
 
 
 ## Installation
