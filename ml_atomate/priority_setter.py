@@ -29,6 +29,16 @@ from ml_atomate.blox_kterayama.curiosity_sampling import stein_novelty
 import importlib
 
 
+logger = getLogger(__name__)
+now = datetime.now()
+FW_LOGGING_FORMAT = '%(asctime)s %(levelname)s %(message)s'  # format for loggers
+basicConfig(filename=f"priority_{now.year}{now.month}{now.day}_{now.hour}{now.minute}{now.second}{now.microsecond}.log",
+            format=FW_LOGGING_FORMAT)
+logger.setLevel(DEBUG)
+
+DEFAULT_PRIORITY = -1
+
+
 def get_args():
     parser = argparse.ArgumentParser()
 
@@ -89,28 +99,28 @@ def get_args():
                         help="Use permutation importance to prune descriptors",
                         action="store_true")
 
-    parser.add_argument("--all_descriptor", "-ad",
-                        help="All descriptor is used (For test)",
-                        action="store_true")
-
     # For black_box optimization
     parser.add_argument("--random_seed", "-rs",
                         help="Random seed for bayes",
                         type=int,
                         default=0)
 
+    parser.add_argument("--all_descriptor", "-ad",
+                        help="All descriptor is used",
+                        action="store_true")
+
     parser.add_argument("--n_descriptor", "-nd",
                         help="Number of descriptors using Gaussian process (pruned by random forest)",
                         type=int,
                         default=10)
 
-    parser.add_argument("--n_probe", "-np",
-                        help="Number of materials to set priority by one ML procedure (probably the number of jobs in the queue system would be sufficient)",
+    parser.add_argument("--n_write_server", "-nws",
+                        help="Number of materials to set priority in mongodb.",
                         type=int,
-                        default=10)
+                        default=-1)
 
     parser.add_argument("--n_rand_basis", "-nrb",
-                        help="Number of basis",
+                        help="Number of basis. (See PHYSBO code.)",
                         type=int,
                         default=0)
 
