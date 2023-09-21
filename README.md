@@ -1,8 +1,10 @@
 ML-atomate
 ====
 
+
 Machine learning-assisted Atomate code for autonomous computational materials screening.
-(This is for review purpose only; the README, example scripts, empty codes and help for priority_setter.py are updated.)
+(This is for review purpose only and now manuscript is accepted for the publication.
+Please see https://github.com/takahashi-akira-36m/ml_atomate , and this repository will be removed soon)
 
 
 ## Installation
